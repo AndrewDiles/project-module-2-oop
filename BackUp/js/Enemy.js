@@ -1,6 +1,3 @@
-let speedboost = 0;
-let killcount = 0;
-
 // The Enemy class will contain information about the enemy such as
 // its position on screen. It will also provide methods for updating
 // and destroying the enemy.
@@ -35,7 +32,7 @@ class Enemy {
         // is why we create a property that refers to it.
         this.domElement = document.createElement('img');
         // We give it a src attribute to specify which image to display.
-        this.domElement.src = './images/destroyer.png';
+        this.domElement.src = './images/enemy.png';
         // We modify the CSS style of the DOM node.
         this.domElement.style.position = 'absolute';
         this.domElement.style.left = `${this.x}px`;
@@ -43,7 +40,7 @@ class Enemy {
         this.domElement.style.zIndex = 5;
         // Show that the user can actually see the img DOM node, we append it to the root DOM node.
         theRoot.appendChild(this.domElement);
-        this.speed = Math.random() / 2 + 0.2 + speedboost;
+        this.speed = Math.random() / 2 + 0.25;
     }
 
     // We set the speed property of the enemy. This determines how fast it moves down the screen. 
@@ -61,12 +58,6 @@ class Enemy {
         // the destroyed property to indicate that the enemy should no longer be in play
         if (this.y > GAME_HEIGHT) {
                 this.root.removeChild(this.domElement);
-                killcount ++;
-                if (Math.floor(killcount%25)==0 &&killcount != 0 ) {
-                    speedboost += 0.1;
-                    console.log('ludicrous speed, go!');
-                }
-                this.score += 100;
                 this.destroyed = true;
         }
     }

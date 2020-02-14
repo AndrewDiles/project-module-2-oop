@@ -6,10 +6,8 @@ const gameEngine = new Engine(document.getElementById("app"));
 // will be called every time the user presses a key. The argument of the function call will be an object.
 // The object will contain information about the key press, such as which key was pressed.
 
-const app = document.getElementById('app');
-// const yoda = document.getElementById('yoda');
 
-let refire = true;
+
 
 const keydownHandler = event => {
     // event.code contains a string. The string represents which key was press. If the
@@ -28,10 +26,7 @@ const keydownHandler = event => {
     if (event.code === "ArrowDown" || event.code == "KeyS") {
         gameEngine.player.moveDown();
     }
-    if (event.code === "Space" && refire === true) {
-        gameEngine.player.fire();
-        setTimeout(function(){fire=true;}, 1500);
-    }
+
 }
 // We add an event listener to document. document the ancestor of all DOM nodes in the DOM.
 document.addEventListener("keydown", keydownHandler);

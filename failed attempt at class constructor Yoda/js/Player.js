@@ -4,10 +4,10 @@
 const laser = new Audio('audio/laserBlast.wav');
 // const yoda = document.getElementById('yoda');
 let loaded = true;
-// console.log(yoda);
-// console.log(yoda.display);
-// yoda.style.display= 'none !important';
-// yoda.style.lenft = '300px';
+console.log(yoda);
+console.log(yoda.display);
+yoda.style.display= 'none !important';
+yoda.style.lenft = '300px';
 
 class Player {
     // The constructor takes one parameter. This parameter refers to the parent DOM node.
@@ -62,12 +62,13 @@ class Player {
     fire() {
         if (loaded) {laser.play();
             loaded=false;
-            // console.log(yoda);
+            new Yoda(this.root,this.domElement.style.left+80,this.domElement.style.top+15);
+
             // yoda.style.display = 'block';
-            // yoda.style.top = `${this.domElement.style.top+15}px`;
-            // console.log(yoda.style.left);
+            yoda.style.top = `${this.domElement.style.top+15}px`;
+            console.log(yoda.style.left);
             // console.log(this.domElement.style.top);
-            // yoda.style.left = `${this.domElement.style.left+80}px`;
+            yoda.style.left = `${this.domElement.style.left+80}px`;
             setTimeout(function(){loaded=true;}, 1500);
         }
     }

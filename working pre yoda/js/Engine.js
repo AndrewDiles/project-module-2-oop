@@ -3,7 +3,6 @@
 // enemy and also relating to how our enemies are created and evolve over time
 scoreDisplay = document.getElementById('score');
 timeDisplay = document.getElementById('time');
-deadtext = document.getElementById('deadtext');
 
 const deathmusic = new Audio('audio/pause.mp3');
 const bgmusic = new Audio('audio/bgmusic.mp3');
@@ -114,18 +113,11 @@ class Engine {
                 element.y <this.player.y+10 && element.y >this.player.y-95 &&
                 element.x <this.player.x+35 && element.x >this.player.x-35){
                 dead = true;
-                deadtext.innerText = `YOU'RE DEAD.`;
-                setTimeout(function(){deadtext.innerText = `YOUR FRIENDS ARE DEAD.`;}, 1500);
-                setTimeout(function(){deadtext.innerText = `YOUR FAMILY'S DEAD.`;}, 3000);
-                setTimeout(function(){deadtext.innerText = `YOUR FUCKING PETS ARE BEING SKINNED ALIVE.`;}, 4500);
-                setTimeout(function(){deadtext.innerText = `YOUR MOM'S A FUCKING WHORE.`;}, 6000);
-                setTimeout(function(){deadtext.innerText = `YOU SUCK AT LIFE.`;}, 7000);
-                setTimeout(function(){deadtext.innerText = `THE WHOLE WORLD HATE YOU.`;}, 9000);
-                setTimeout(function(){deadtext.innerText = `YOU'RE GOING TO HELL.`;}, 11000);
-                setTimeout(function(){deadtext.innerText = `LIVE WITH IT.`;}, 13000);
-                setTimeout(function(){deadtext.innerText = `GAME OVER`;}, 15000);
             }
         });
+
+
+        
         return dead;
     }
 }

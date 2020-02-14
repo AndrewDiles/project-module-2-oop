@@ -1,0 +1,26 @@
+body {
+    background-color: black;
+    background-image: url(images/space.gif);
+    background-position: center;
+    background-size: cover;
+}
+
+#bar {
+    width: 1125px;
+    display: flex;
+    position: absolute;
+    color: white;
+    justify-content: space-between;
+    z-index: 10000;
+}
+
+#yoda {
+    /* position: absolute; */
+    width: 20px;
+    height: auto;
+    display: 'none' !important;
+}
+
+#yoda.div > #yoda {
+    display: none;
+}

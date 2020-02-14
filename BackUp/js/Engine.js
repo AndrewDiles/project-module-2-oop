@@ -1,22 +1,6 @@
 // The engine class will only be instantiated once. It contains all the logic
 // of the game relating to the interactions between the player and the
 // enemy and also relating to how our enemies are created and evolve over time
-scoreDisplay = document.getElementById('score');
-timeDisplay = document.getElementById('time');
-deadtext = document.getElementById('deadtext');
-
-const deathmusic = new Audio('audio/pause.mp3');
-const bgmusic = new Audio('audio/bgmusic.mp3');
-const never = new Audio('audio/neversaynever.mp3');
-
-const interactionWorkAround = function () {
-    bgmusic.loop= 'true';
-    bgmusic.play();
-}
-
-setTimeout(interactionWorkAround, 2000);
-
-
 class Engine {
     // The constructor has one parameter. It will refer to the DOM node that we will be adding everything to.
     // You need to provide the DOM node when you create an instance of the class
@@ -33,7 +17,6 @@ class Engine {
         // We add the background image to the game
         addBackground(this.root);
         this.score = 0;
-        this.time = 0;
     }
 
     // The gameLoop will run every few milliseconds. It does several things
@@ -58,17 +41,6 @@ class Engine {
         this.enemies = this.enemies.filter(enemy => {
             return !enemy.destroyed;
         });
-
-        let num = (Math.round(100*this.time));
-        // console.log(num);
-        if(num%500===0 && num != 0 && MAX_ENEMIES<16){
-            console.log('here comes another one');
-            MAX_ENEMIES++;
-            console.log(MAX_ENEMIES);
-        }
-
-
-
         // We need to perform the addition of enemies until we have enough enemies.
         while (this.enemies.length < MAX_ENEMIES) {
             // We find the next available spot and, using this spot, we create an enemy.
@@ -84,22 +56,14 @@ class Engine {
         // Adding 1 point per game loop
 
         this.score += 1;
-        this.time += 0.0215
-        scoreDisplay.innerText = this.score;
-        timeDisplay.innerText = Math.floor(this.time);
+        // this.root.appendChild(this.score);    //this does not work, this.score not a node
+        
 
-
-        // if(Math.floor(this.time)%10==0) {MAX_ENEMIES++;}
-
+        console.log(this.score);
         // We check if the player is dead. If he is, we alert the user
         // and return from the method (Why is the return statement important?)
         if (this.isPlayerDead()) {
-            bgmusic.pause();
-            never.play();
-            // document.getElementById("myAudio").loop = true;
-            deathmusic.loop = 'true';
-            deathmusic.play();
-            // window.alert("Game over");         //damn is this annoying...
+            window.alert("Game over");
             return;
         }
         // If the player is not dead, then we put a setTimeout to run the gameLoop in 20 milliseconds
@@ -110,22 +74,17 @@ class Engine {
     isPlayerDead = () => {
         let dead = false
         this.enemies.forEach(element => {
+            // console.log(element.x);
+            // console.log(this.player.x);
             if (
-                element.y <this.player.y+10 && element.y >this.player.y-95 &&
+                element.y <this.player.y-25 && element.y >this.player.y-95 &&
                 element.x <this.player.x+35 && element.x >this.player.x-35){
                 dead = true;
-                deadtext.innerText = `YOU'RE DEAD.`;
-                setTimeout(function(){deadtext.innerText = `YOUR FRIENDS ARE DEAD.`;}, 1500);
-                setTimeout(function(){deadtext.innerText = `YOUR FAMILY'S DEAD.`;}, 3000);
-                setTimeout(function(){deadtext.innerText = `YOUR FUCKING PETS ARE BEING SKINNED ALIVE.`;}, 4500);
-                setTimeout(function(){deadtext.innerText = `YOUR MOM'S A FUCKING WHORE.`;}, 6000);
-                setTimeout(function(){deadtext.innerText = `YOU SUCK AT LIFE.`;}, 7000);
-                setTimeout(function(){deadtext.innerText = `THE WHOLE WORLD HATE YOU.`;}, 9000);
-                setTimeout(function(){deadtext.innerText = `YOU'RE GOING TO HELL.`;}, 11000);
-                setTimeout(function(){deadtext.innerText = `LIVE WITH IT.`;}, 13000);
-                setTimeout(function(){deadtext.innerText = `GAME OVER`;}, 15000);
             }
         });
+
+
+        
         return dead;
     }
 }

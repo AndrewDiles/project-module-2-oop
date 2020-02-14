@@ -39,9 +39,7 @@ const addBackground = root => {
     // We create a new img DOM node.
     const bg = document.createElement("img");
     // We set its src attribute and the height and width CSS attributes
-
-    // bg.src = 'images/space.gif';
-    
+    bg.src = 'images/stars.png';
     bg.style.height = `${GAME_HEIGHT}px`;
     bg.style.width = `${GAME_WIDTH}px`;
     // We add it to the root DOM node
@@ -56,6 +54,6 @@ const addBackground = root => {
     whiteBox.style.top = `${GAME_HEIGHT}px`;
     whiteBox.style.height = `${ENEMY_HEIGHT}px`;
     whiteBox.style.width = `${GAME_WIDTH}px`;
-    // whiteBox.style.background = '#fff';
+    whiteBox.style.background = '#fff';
     root.append(whiteBox);
 }

@@ -7,7 +7,7 @@ const gameEngine = new Engine(document.getElementById("app"));
 // The object will contain information about the key press, such as which key was pressed.
 
 const app = document.getElementById('app');
-// const yoda = document.getElementById('yoda');
+const yoda = document.getElementById('yoda');
 
 let refire = true;
 

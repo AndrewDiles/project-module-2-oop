@@ -1,14 +1,5 @@
 // There will only be one instance of this class. This instance will contain the
 // data and methods related to the burger that moves at the bottom of your screen
-
-const laser = new Audio('audio/laserBlast.wav');
-// const yoda = document.getElementById('yoda');
-let loaded = true;
-// console.log(yoda);
-// console.log(yoda.display);
-// yoda.style.display= 'none !important';
-// yoda.style.lenft = '300px';
-
 class Player {
     // The constructor takes one parameter. This parameter refers to the parent DOM node.
     // We will be adding a DOM element to this parent DOM node.
@@ -22,7 +13,7 @@ class Player {
         // We create a DOM node. We will be updating the DOM node every time we move the player, so we store a reference to the
         // DOM node in a property.
         this.domElement = document.createElement("img");
-        this.domElement.src = 'images/falcon.png';                      // change to falcon once size is the same
+        this.domElement.src = 'images/player.png';                      // change to falcon once size is the same
         // this.domElement.style.height = '150px';                         //added
         // this.domElement.style.width= '200px';                           //added
         this.domElement.style.position = 'absolute';
@@ -54,22 +45,11 @@ class Player {
         this.domElement.style.top = `${this.y}px`;
     }
     moveUp() {
+        console.log(this.y);
         if (this.y > 0) {
             this.y = this.y - PLAYER_HEIGHT;
+            console.log('up trigger');
         }
         this.domElement.style.top = `${this.y}px`;
     }
-    fire() {
-        if (loaded) {laser.play();
-            loaded=false;
-            // console.log(yoda);
-            // yoda.style.display = 'block';
-            // yoda.style.top = `${this.domElement.style.top+15}px`;
-            // console.log(yoda.style.left);
-            // console.log(this.domElement.style.top);
-            // yoda.style.left = `${this.domElement.style.left+80}px`;
-            setTimeout(function(){loaded=true;}, 1500);
-        }
-    }
-
 }
