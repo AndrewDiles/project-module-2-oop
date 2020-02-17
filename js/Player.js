@@ -8,6 +8,7 @@ let loaded = true;
 // console.log(yoda.display);
 // yoda.style.display= 'none !important';
 // yoda.style.lenft = '300px';
+let music = false;
 
 class Player {
     // The constructor takes one parameter. This parameter refers to the parent DOM node.
@@ -35,6 +36,7 @@ class Player {
     // how we relate the key presses to this method
 
     moveLeft() {
+        if (music === false) {bgmusic.loop= 'true'; bgmusic.play(); music = true;}
         if (this.x > 0) {
             this.x = this.x - PLAYER_WIDTH;
         }
@@ -42,24 +44,28 @@ class Player {
     }
     // We do the same thing for the right key. See Engine.js to see when this happens.
     moveRight() {
+        if (music === false) {bgmusic.loop= 'true'; bgmusic.play(); music = true;}
         if (this.x + PLAYER_WIDTH < GAME_WIDTH) {
             this.x = this.x + PLAYER_WIDTH;
         }
         this.domElement.style.left = `${this.x}px`;
     }
     moveDown() {
+        if (music === false) {bgmusic.loop= 'true'; bgmusic.play(); music = true;}
         if (this.y + 2*PLAYER_HEIGHT < GAME_HEIGHT) {
             this.y = this.y + PLAYER_HEIGHT;
         }
         this.domElement.style.top = `${this.y}px`;
     }
     moveUp() {
+        if (music === false) {bgmusic.loop= 'true'; bgmusic.play(); music = true;}
         if (this.y > 0) {
             this.y = this.y - PLAYER_HEIGHT;
         }
         this.domElement.style.top = `${this.y}px`;
     }
     fire() {
+        if (music === false) {bgmusic.loop= 'true'; bgmusic.play(); music = true;}
         if (loaded) {laser.play();
             loaded=false;
             // console.log(yoda);

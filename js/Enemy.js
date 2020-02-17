@@ -66,7 +66,6 @@ class Enemy {
                     speedboost += 0.1;
                     console.log('ludicrous speed, go!');
                 }
-                this.score += 100;
                 this.destroyed = true;
         }
     }
