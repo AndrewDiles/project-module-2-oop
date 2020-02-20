@@ -1,4 +1,4 @@
-# Object Oriented Programming Game Project
+# GIT-GUD DUN-DIE
 
 <p align="center"><img src="./images/gameImage.png"></p>
 
